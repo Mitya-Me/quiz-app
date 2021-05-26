@@ -1,6 +1,10 @@
 import { useState } from "react"
-//Components
+import { fetchQuizQuestion } from "./API";
+//  Components
 import QuestionCard from "./components/QuestionCard"
+//  Enum
+import {  Difficulty } from "./API"
+
 
 
 const TOTAL_QUESTION = 10;
@@ -13,9 +17,11 @@ const App = () => {
   const [score, setScore] = useState(0)
   const [gameOver, setGameOver] = useState(true)
 
+  console.log(fetchQuizQuestion(TOTAL_QUESTION, Difficulty.EASY))
+
   const startTrivia = async () => {
     
-  }
+  } 
 
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
     
@@ -33,14 +39,14 @@ const App = () => {
       </button>
       <p className='score'>Score:</p>
       <p>Loading Questions...</p>
-      <QuestionCard
+      {/* <QuestionCard
         questionNr={number + 1}
         totalQuestion={TOTAL_QUESTION}
         question={question[number].question}
         answers={question[number].answers}
         userAnswer={userAnswers ? userAnswers[number] : undefined}
         callback={checkAnswer}
-      />
+      /> */}
       <button className='next' onClick={nextQuestion}>
         Next Question
       </button>
