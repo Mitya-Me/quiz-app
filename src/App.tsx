@@ -1,26 +1,45 @@
 import { useState } from "react"
-import { fetchQuizQuestion } from "./API";
+import { fetchQuizQuestions } from "./API";
 //  Components
 import QuestionCard from "./components/QuestionCard"
 //  Enum
-import {  Difficulty } from "./API"
+import { Difficulty } from "./API"
+//  Interface
+import { QuestionState } from "./API"
 
-
+interface AnswerObject  {
+  question: string;
+  answer: string;
+  correct: boolean;
+  correctAnswer: string;
+}
 
 const TOTAL_QUESTION = 10;
 
 const App = () => {
   const [loading, setLoading] = useState(false)
-  const [question, setQuestion] = useState([])
+  const [questions, setQuestions] = useState<QuestionState[]>([])
   const [number, setNumber] = useState(0)
-  const [userAnswers, setUserAnswers] = useState([])
+  const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([])
   const [score, setScore] = useState(0)
   const [gameOver, setGameOver] = useState(true)
 
-  console.log(fetchQuizQuestion(TOTAL_QUESTION, Difficulty.EASY))
-
   const startTrivia = async () => {
-    
+    // Добавить try catch
+    setLoading(true)
+    setGameOver(false)
+
+    const newQuestion = await fetchQuizQuestions(
+      TOTAL_QUESTION,
+      Difficulty.EASY
+    )
+
+    setQuestions(newQuestion)
+    setScore(0)
+    setUserAnswers([])
+    setNumber(0);
+    setLoading(false)
+
   } 
 
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
