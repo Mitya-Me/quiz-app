@@ -4,7 +4,7 @@ export interface Question {
     correct_answer: string;
     difficulty: string;
     incorrect_answers: string[];
-    qustion: string;
+    question: string;
     type: string;
 }
 export interface Answers {
