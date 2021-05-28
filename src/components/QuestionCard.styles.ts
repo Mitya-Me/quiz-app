@@ -26,6 +26,8 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
     }
 
     button {
+        transition: all 0.2s ease;
+
         cursor: pointer;
         user-select: none;
         font-size: 1rem;
@@ -44,5 +46,10 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
         border-radius: 10px;
         color: #fff;
         text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    }
+
+    button:hover {
+        color: hotpink;
+        transform: scale(1.02)
     }
 `;
