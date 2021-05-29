@@ -8,10 +8,16 @@ export const Wrapper = styled.div`
     box-shadow: 0px 2px 10px hotpink;
     text-align: center;
 
-    p {
-        font-size: 1rem;
+    .number {
+        font-size: 1.1rem;
+        color: grey;
     }
-`;
+
+    .question {
+        font-size: 1.3rem;
+        color: #555555;
+    }
+`
 
 type ButtonWrapperProps = {
     correct: boolean;
@@ -20,20 +26,23 @@ type ButtonWrapperProps = {
 
 export const ButtonWrapper = styled.div<ButtonWrapperProps>`
     transition: all 0.5s ease;
+    display: flex;
+    justify-content: center;
 
     :hover {
         opacity: 0.8;
     }
 
     button {
+        display: flex;
+        justify-content: center;
+        padding: 5px 10px;
         transition: all 0.2s ease;
-
         cursor: pointer;
         user-select: none;
-        font-size: 1rem;
+        font-size: 1.5rem;
         width: 90%;
         font-weight: bold;
-        height: 40px;
         margin: 5px 0;
         background: ${({ correct, userClicked }) =>
             correct
@@ -48,8 +57,18 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
         text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
     }
 
+    @media(max-width: 450px) {
+        button {
+            font-size: 1.2rem;
+        }
+    }
+
     button:hover {
-        color: hotpink;
-        transform: scale(1.02)
+        transform: scale(1.02);
+        text-shadow: 0px 2px 2px hotpink;
+    }
+    
+    span {
+        flex: 0 0 100%;
     }
 `;

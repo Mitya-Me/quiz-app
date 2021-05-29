@@ -1,5 +1,8 @@
 import styled, { createGlobalStyle } from "styled-components";
 
+import UbuntuMonoBold from "./scss/fonts/UbuntuMono-Bold.woff";
+import UbuntuMonoRegular from "./scss/fonts/UbuntuMono-Regular.woff";
+
 export const GlobalStyle = createGlobalStyle`
     html {
     height: 100%;
@@ -12,12 +15,29 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0 20px;
     display: flex;
     justify-content: center;
+    font-weight: bold;
+    }
+
+    @font-face {
+        font-family: 'UbuntuMono';
+        src: url(${UbuntuMonoRegular});
+        font-weight: 400;
+        font-display: swap;
+        font-style: normal;
+    
+    @font-face {
+        font-family: 'UbuntuMono';
+        src: url(${UbuntuMonoBold});
+        font-weight: 700;
+        font-display: swap;
+        font-style: normal;
     }
 
   * {
-    font-family: 'Ubuntu';
+    font-family: 'UbuntuMono';
     box-sizing: border-box;
     }
+
 `;
 
 export const Wrapper = styled.div`
@@ -31,14 +51,15 @@ export const Wrapper = styled.div`
 
     .score {
         color: #fff;
-        font-size: 2rem;
-        margin-bottom: 1rem;
+        font-size: 35px;
+        margin-bottom: 10px;
+        margin-block-start: 0;
     }
 
     h1 {
-        font-family: "Ubuntu";
+        font-family: 'UbuntuMono';
         background-image: linear-gradient(180deg, pink, white);
-        font-weight: 400;
+        font-weight: bold;
         background-size: 100%;
         background-clip: text;
         -webkit-background-clip: text;
@@ -46,10 +67,17 @@ export const Wrapper = styled.div`
         -moz-background-clip: text;
         -moz-text-fill-color: transparent;
         filter: drop-shadow(2px 2px hotpink);
-        font-size: 70px;
+        font-size: 4rem;
         text-align: center;
         margin: 20px;
     }
+
+    @media (max-width: 435px) {
+        h1 {
+            font-size: 2rem;
+        }
+    }
+
 
     .start,
     .next {
