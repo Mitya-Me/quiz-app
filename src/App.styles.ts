@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
     background-size: cover;
     background-color: pink;
     margin: 0;
-    padding: 0 20px;
+    padding: 0 5px;
     display: flex;
     justify-content: center;
     font-weight: bold;
@@ -74,7 +74,7 @@ export const Wrapper = styled.div`
 
     @media (max-width: 435px) {
         h1 {
-            font-size: 2rem;
+            font-size: 1.5rem;
         }
     }
 

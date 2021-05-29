@@ -1,12 +1,22 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-    max-width: 1100px;
+    width: 1100px;
     background: #ebfeff;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0px 2px 10px hotpink;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: 1200px) {
+        width: 800px;
+    }
+    
+    @media (max-width: 830px) {
+        width: 99%;
+    }
 
     .number {
         font-size: 1.1rem;
@@ -41,7 +51,7 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
         cursor: pointer;
         user-select: none;
         font-size: 1.5rem;
-        width: 90%;
+        width: 80%;
         font-weight: bold;
         margin: 5px 0;
         background: ${({ correct, userClicked }) =>
