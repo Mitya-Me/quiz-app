@@ -1,6 +1,6 @@
 {
-  "name": "quiz_app",
-  "home": "https://mitya-me.github.io/quiz-app",
+  "name": "quizapp",
+  "homepage": "https://mitya-me.github.io/quiz-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
