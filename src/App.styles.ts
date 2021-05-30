@@ -218,6 +218,7 @@ export const Wrapper = styled.div`
             background-repeat: no-repeat;
             background-size: 80%;
             animation: shine 1.8s ease-in-out infinite;
+            -webkit-animation: shine 1.8s ease-in-out infinite;
 
             @media (max-width: 850px) {
                 font-size: 1.5rem;
