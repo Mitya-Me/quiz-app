@@ -7,7 +7,7 @@ import { Difficulty } from "./API";
 //  Interface
 import { QuestionState } from "./API";
 // Styles
-import { GlobalStyle, Wrapper } from './App.styles';
+import { GlobalStyle, Wrapper} from "./App.styles";
 
 export interface AnswerObject {
     question: string;
@@ -77,34 +77,49 @@ const App = () => {
         <>
             <GlobalStyle />
             <Wrapper>
-                    <h1>React Quiz</h1>
+                <header className='header'>
+                    <h1 className='header__title'> React Quiz </h1>
                     {gameOver || userAnswers.length === TOTAL_QUESTION ? (
-                        <button className='start' onClick={startTrivia}>
+                        <button className='header__btn-start' onClick={startTrivia}>
                             Start
                         </button>
                     ) : null}
-                {!gameOver ? <p className='score'>Score:{score}</p> : null}
-                    {loading && <p>Loading Questions...</p>}
-                    {!loading && !gameOver && (
-                        <QuestionCard
-                            questionNr={number + 1}
-                            totalQuestion={TOTAL_QUESTION}
-                            question={questions[number].question}
-                            answers={questions[number].answers}
-                            userAnswer={
-                                userAnswers ? userAnswers[number] : undefined
-                            }
-                            callback={checkAnswer}
-                        />
-                    )}
+                </header>
+
+                <div className='content-page'>
+                    <div className='content-page__stat'>
+                        {!gameOver ? (
+                            <p className='content-page__stat-score'>Score:<span>{score}</span></p>
+                        ) : null}
+                        {loading && <p className='content-page__stat-preload'>Loading Questions...</p>}
+                    </div>
+
+                    <div className='content-page__question-block question-block'>
+                        {!loading && !gameOver && (
+                            <QuestionCard
+                                questionNr={number + 1}
+                                totalQuestion={TOTAL_QUESTION}
+                                question={questions[number].question}
+                                answers={questions[number].answers}
+                                userAnswer={
+                                    userAnswers
+                                        ? userAnswers[number]
+                                        : undefined
+                                }
+                                callback={checkAnswer}
+                            />
+                        )}
+                    </div>
+
                     {!gameOver &&
                     !loading &&
                     userAnswers.length === number + 1 &&
                     number !== TOTAL_QUESTION - 1 ? (
-                        <button className='next' onClick={nextQuestion}>
+                        <button className='content-page__btn-next' onClick={nextQuestion}>
                             Next Question
                         </button>
                     ) : null}
+                </div>
             </Wrapper>
         </>
     );

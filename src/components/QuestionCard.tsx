@@ -1,8 +1,8 @@
-import { FC } from 'react'
+import { FC } from "react";
 // Types
-import { AnswerObject } from '../App'
+import { AnswerObject } from "../App";
 // Styles
-import { Wrapper, ButtonWrapper } from './QuestionCard.styles'
+import { Wrapper, AnswerWrapper } from "./QuestionCard.styles";
 
 interface Props {
     question: string;
@@ -19,30 +19,42 @@ const QuestionCard: FC<Props> = ({
     callback,
     userAnswer,
     questionNr,
-    totalQuestion
+    totalQuestion,
 }) => (
-    <Wrapper className="wrapper">
-        <p className='number'>
-            Question: {questionNr} / {totalQuestion}
-        </p>
-        <p className='question' dangerouslySetInnerHTML={{ __html: question }}/>
-        <div >
-            {answers.map(answer => (
-                <ButtonWrapper
+    <Wrapper>
+        <div className='question-block__header'>
+            <p className='question-block__header-count'>
+                Question: {questionNr} / {totalQuestion}
+            </p>
+            <p
+                className='question-block__header-quest'
+                dangerouslySetInnerHTML={{ __html: question }}
+            />
+        </div>
+
+        <div className='question-block__answers'>
+            {answers.map((answer) => (
+                <AnswerWrapper
+                    className='question-block__answer'
                     key={answer}
                     correct={userAnswer?.correctAnswer === answer}
                     userClicked={userAnswer?.answer === answer}
                 >
                     <button
+                        className='question-block__answer-btn'
                         disabled={userAnswer ? true : false}
                         onClick={callback}
-                        value={answer}>
-                        <span dangerouslySetInnerHTML={{__html: answer}} />
+                        value={answer}
+                    >
+                        <span
+                            className='question-block__answer-text'
+                            dangerouslySetInnerHTML={{ __html: answer }}
+                        />
                     </button>
-                </ButtonWrapper>
+                </AnswerWrapper>
             ))}
         </div>
     </Wrapper>
-)
+);
 
-export default QuestionCard
+export default QuestionCard;
